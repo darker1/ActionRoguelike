@@ -16,7 +16,7 @@ class ACTIONROGUELIKE_API AARLCharacter : public ACharacter
 
 protected:
 	UPROPERTY(EditAnywhere)
-		TSubclassOf<AActor> ProjectileClass;
+	TSubclassOf<AActor> ProjectileClass;
 
 public:
 	// Sets default values for this character's properties

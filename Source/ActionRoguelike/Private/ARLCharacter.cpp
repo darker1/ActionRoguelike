@@ -55,7 +55,7 @@ void AARLCharacter::MoveRight(float Value)
 
 void AARLCharacter::PrimaryAttack()
 {
-	FTransform SpawnTransform = FTransform(GetControlRotation(), GetActorLocation());
+	FTransform SpawnTransform = FTransform(GetControlRotation(),GetMesh()->GetSocketLocation("Muzzle_01"));
 
 	FActorSpawnParameters SpawnParameters;
 	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
@@ -79,6 +79,7 @@ void AARLCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
 
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("PrimaryAttack", IE_Pressed, this, &AARLCharacter::PrimaryAttack);
 }
 
