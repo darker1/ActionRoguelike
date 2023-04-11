@@ -55,6 +55,7 @@ void AARLCharacter::MoveRight(float Value)
 
 void AARLCharacter::PrimaryAttack()
 {
+	UE_LOG(LogTemp, Log, TEXT("Firing Primary Attack"));
 	FTransform SpawnTransform = FTransform(GetControlRotation(),GetMesh()->GetSocketLocation("Muzzle_01"));
 
 	FActorSpawnParameters SpawnParameters;
