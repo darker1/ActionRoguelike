@@ -3,7 +3,9 @@
 
 #include "ARLCharacter.h"
 
+#include "ARLInterationComponent.h"
 #include "Camera/CameraComponent.h"
+#include "Components/WidgetInteractionComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 
@@ -20,6 +22,8 @@ AARLCharacter::AARLCharacter()
 	CameraComp = CreateDefaultSubobject<UCameraComponent>("CameraComp");
 	CameraComp->SetupAttachment(SpringArmComp);
 
+	InterationComponent = CreateDefaultSubobject<UARLInterationComponent>("InteractionComp");
+	
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	bUseControllerRotationYaw = false;
 }
@@ -52,6 +56,10 @@ void AARLCharacter::MoveRight(float Value)
 
 	AddMovementInput(RightVector, Value);
 }
+void AARLCharacter::PrimaryInteraction()
+{
+	InterationComponent->PrimaryInteract();
+}
 
 void AARLCharacter::PrimaryAttack()
 {
@@ -82,5 +90,6 @@ void AARLCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("PrimaryAttack", IE_Pressed, this, &AARLCharacter::PrimaryAttack);
+	PlayerInputComponent->BindAction("PrimaryInteraction", IE_Pressed, this, &AARLCharacter::PrimaryInteraction);
 }
 

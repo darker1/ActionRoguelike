@@ -8,12 +8,9 @@
 // Sets default values
 AARLExplosiveBarrel::AARLExplosiveBarrel()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-
 	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>("StaticMeshComponent");
 	StaticMeshComponent->SetSimulatePhysics(true);
-	StaticMeshComponent->SetCollisionProfileName(UCollisionProfile::PhysicsActor_ProfileName);
+	// StaticMeshComponent->SetCollisionProfileName(UCollisionProfile::PhysicsActor_ProfileName);
 
 	RootComponent = StaticMeshComponent;
 
@@ -25,6 +22,8 @@ AARLExplosiveBarrel::AARLExplosiveBarrel()
 	ImpulseComponent->Radius = 750.0f;
 	ImpulseComponent->ImpulseStrength = 2500.0f;
 	ImpulseComponent->bImpulseVelChange = true;
+
+	ImpulseComponent->AddCollisionChannelToAffect(ECC_WorldDynamic);
 }
 
 // Called when the game starts or when spawned

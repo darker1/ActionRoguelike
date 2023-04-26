@@ -3,15 +3,13 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "ARLProjectile.h"
 #include "GameFramework/Actor.h"
 #include "ARLMagicProjectile.generated.h"
 
-class USphereComponent;
-class UProjectileMovementComponent;
-class UParticleSystemComponent;
 
 UCLASS()
-class ACTIONROGUELIKE_API AARLMagicProjectile : public AActor
+class ACTIONROGUELIKE_API AARLMagicProjectile : public AARLProjectile
 {
 	GENERATED_BODY()
 	
@@ -22,15 +20,6 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-	UPROPERTY(VisibleAnywhere)
-	USphereComponent* SphereComponent;
-
-	UPROPERTY(VisibleAnywhere)
-	UProjectileMovementComponent* MovementComponent;
-
-	UPROPERTY(VisibleAnywhere)
-	UParticleSystemComponent* EffectComponent;
 
 public:	
 	// Called every frame

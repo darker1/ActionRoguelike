@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "ARLCharacter.generated.h"
 
+class UARLInterationComponent;
 class UCameraComponent;
 class USpringArmComponent;
 
@@ -27,13 +28,16 @@ protected:
 	USpringArmComponent* SpringArmComp;
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* CameraComp;
+	UPROPERTY(VisibleAnywhere)
+	UARLInterationComponent* InterationComponent;
+	
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	void MoveForward(float Value);
 	void MoveRight(float X);
 	void PrimaryAttack();
-
+	void PrimaryInteraction();
 public:	 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
